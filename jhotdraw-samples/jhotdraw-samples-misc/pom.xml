@@ -6,8 +6,20 @@
 		<artifactId>jhotdraw-samples</artifactId>
 		<version>9.1-SNAPSHOT</version>
 	</parent>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+	</properties>
 	<artifactId>jhotdraw-samples-misc</artifactId>
 	<packaging>jar</packaging>
+	<repositories>
+		<repository>
+			<id>git-corfixen</id>
+			<name>corfixen's Git based repo</name>
+			<url>https://github.com/sweat-tek/MavenRepository/raw/repository/</url>
+		</repository>
+	</repositories>
 	<dependencies>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
@@ -24,10 +36,39 @@
 			<artifactId>htmlunit</artifactId>
 			<version>2.37.0</version>
 		</dependency>
+		<dependency>
+			<groupId>dk.sdu.mmmi</groupId>
+			<artifactId>featuretracer</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.9.9</version>
+		</dependency>
 	 <dependency>
 	  <groupId>${project.groupId}</groupId>
 	  <artifactId>jhotdraw-app</artifactId>
 	  <version>${project.version}</version>
 	 </dependency>
 	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>3.1.0</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>java</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<mainClass>org.jhotdraw.samples.svg.Main</mainClass>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>
