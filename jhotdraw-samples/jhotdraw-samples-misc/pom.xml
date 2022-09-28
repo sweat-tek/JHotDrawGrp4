@@ -8,6 +8,13 @@
 	</parent>
 	<artifactId>jhotdraw-samples-misc</artifactId>
 	<packaging>jar</packaging>
+	<repositories>
+		<repository>
+			<id>github</id>
+			<name>GitHub external Packages</name>
+			<url>https://github.com/sweat-tek/MavenRepository/raw/repository</url>
+		</repository>
+	</repositories>
 	<dependencies>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
@@ -24,6 +31,17 @@
 			<artifactId>htmlunit</artifactId>
 			<version>2.37.0</version>
 		</dependency>
+		<dependency>
+			<groupId>dk.sdu.mmmi</groupId>
+			<artifactId>featuretracerlite</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.9.9</version>
+		</dependency>
+
 	 <dependency>
 	  <groupId>${project.groupId}</groupId>
 	  <artifactId>jhotdraw-app</artifactId>

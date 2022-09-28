@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="jhotdraw-actions" />
+        <module name="jhotdraw-utils" />
+        <module name="jhotdraw-api" />
+        <module name="jhotdraw-gui" />
+        <module name="jhotdraw-core" />
+        <module name="jhotdraw-datatransfer" />
+        <module name="jhotdraw-xml" />
+        <module name="jhotdraw-samples-misc" />
+        <module name="jhotdraw-samples-mini" />
+        <module name="jhotdraw-app" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="jhotdraw" target="1.8" />
+      <module name="jhotdraw-actions" target="1.8" />
+      <module name="jhotdraw-api" target="1.8" />
+      <module name="jhotdraw-app" target="1.8" />
+      <module name="jhotdraw-core" target="1.8" />
+      <module name="jhotdraw-datatransfer" target="1.8" />
+      <module name="jhotdraw-gui" target="1.8" />
+      <module name="jhotdraw-samples" target="1.8" />
+      <module name="jhotdraw-samples-mini" target="1.8" />
+      <module name="jhotdraw-samples-misc" target="1.8" />
+      <module name="jhotdraw-utils" target="1.8" />
+      <module name="jhotdraw-xml" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

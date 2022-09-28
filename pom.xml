@@ -8,6 +8,13 @@
 	<organization>
 		<name>JHotDraw</name>
 	</organization>
+	<repositories>
+		<repository>
+			<id>github</id>
+			<name>GitHub external Packages</name>
+			<url>https://maven.pkg.github.com/sweat-tek/MavenRepository</url>
+		</repository>
+	</repositories>
 	<licenses>
 		<license>
 			<name>GNU Library or Lesser General Public License (LGPL) V2.1</name>
@@ -37,7 +44,6 @@
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<version>3.1.1</version>
 				<configuration>
-					<additionalparam>-Xdoclint:none</additionalparam>
 					<failOnWarnings>false</failOnWarnings>
 					<failOnError>false</failOnError>
 				</configuration>
@@ -51,18 +57,6 @@
 					<target>${maven.compiler.target}</target>
 					<encoding>${project.build.sourceEncoding}</encoding>
 					<!-- <compilerArgument>-Xlint:unchecked</compilerArgument> -->
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>com.amashchenko.maven.plugin</groupId>
-				<artifactId>gitflow-maven-plugin</artifactId>
-				<version>1.14.0</version>
-				<configuration>
-					<pushRemote>false</pushRemote>
-					<mvnExecutable>${M2_HOME}/bin/mvn</mvnExecutable>
-					<skipTestProject>true</skipTestProject>
-					<fetchRemote>false</fetchRemote>
-					<skipFeatureVersion>true</skipFeatureVersion>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -104,14 +98,14 @@
 								<module name="StringLiteralEquality" />
 								<module name="RedundantImport" />
 								<module name="UnusedImports" />
-                                        
+
 								<module name="WhitespaceAfter" />
-										
+
 								<module name="NeedBraces" />
 								<!-- <module name="UnnecessaryParentheses" /> -->
 								<module name="LeftCurly" />
 								<module name="RightCurly" />
-                                        
+
 								<module name="SuppressWarningsHolder" />
 							</module>
 						</module>
@@ -133,9 +127,9 @@
 		<module>jhotdraw-xml</module>
 		<module>jhotdraw-api</module>
 		<module>jhotdraw-utils</module>
-	 <module>jhotdraw-gui</module>
-	 <module>jhotdraw-app</module>
-	 <module>jhotdraw-datatransfer</module>
-	 <module>jhotdraw-actions</module>
+		<module>jhotdraw-gui</module>
+		<module>jhotdraw-app</module>
+		<module>jhotdraw-datatransfer</module>
+		<module>jhotdraw-actions</module>
 	</modules>
 </project>
