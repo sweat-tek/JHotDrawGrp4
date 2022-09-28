@@ -58,7 +58,6 @@ import javax.swing.undo.CannotRedoException;
 import javax.swing.undo.CannotUndoException;
 import org.jhotdraw.api.gui.EditableComponent;
 
-import com.sun.java.accessibility.util.AWTEventMonitor;
 import static org.jhotdraw.draw.AttributeKeys.CANVAS_FILL_COLOR;
 import static org.jhotdraw.draw.AttributeKeys.CANVAS_FILL_OPACITY;
 import static org.jhotdraw.draw.AttributeKeys.CANVAS_HEIGHT;
@@ -302,10 +301,6 @@ public abstract class AbstractDrawingView implements DrawingView, EditableCompon
         }
     }
     private final EventHandler eventHandler = new EventHandler();
-
-    public AbstractDrawingView() {
-        AWTEventMonitor.addFocusListener(eventHandler);
-    }
 
     @Override
     public Drawing getDrawing() {
