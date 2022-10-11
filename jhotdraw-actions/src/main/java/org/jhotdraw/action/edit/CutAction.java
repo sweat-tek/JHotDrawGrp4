@@ -56,7 +56,6 @@ public class CutAction extends AbstractSelectionAction {
         labels.configureAction(this, ID);
     }
 
-    @FeatureEntryPoint(value = "Cut")
     @Override
     public void actionPerformed(ActionEvent evt) {
         JComponent c = target;
