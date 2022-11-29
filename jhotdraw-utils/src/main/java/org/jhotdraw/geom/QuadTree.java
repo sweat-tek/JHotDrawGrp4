@@ -59,7 +59,7 @@ public class QuadTree<T> implements Serializable {
 
     public void reorganize() {
         root.join();
-        outside.putAll(root.objects);
+        outside.putAll(root.objects); // adds all bounds to the outside map
         root.objects.clear();
         Iterator<Map.Entry<T, Rectangle2D.Double>> i = outside.entrySet().iterator();
         Map.Entry<T, Rectangle2D.Double> entry = i.next();
@@ -67,13 +67,13 @@ public class QuadTree<T> implements Serializable {
         while (i.hasNext()) {
             entry = i.next();
             Rectangle2D.Double bounds = entry.getValue();
-            treeBounds.add(bounds);
+            treeBounds.add(bounds); // Joining the bounds to one big bound containing all bounds
         }
-        root.bounds = treeBounds;
-        i = outside.entrySet().iterator();
+        root.bounds = treeBounds; // New root is the joined bounds
+        i = outside.entrySet().iterator(); // Resets iterator
         while (i.hasNext()) {
             entry = i.next();
-            root.add(entry.getKey(), entry.getValue());
+            root.add(entry.getKey(), entry.getValue()); // Adds all bounds to the new big bound
         }
         outside.clear();
     }
@@ -118,6 +118,22 @@ public class QuadTree<T> implements Serializable {
             }
         }
         return result;
+    }
+
+    public int getMaxCapacity() {
+        return maxCapacity;
+    }
+
+    public int getMinSize() {
+        return minSize;
+    }
+
+    public int getMaxOutside() {
+        return maxOutside;
+    }
+
+    public int getSize() {
+        return root.objects.size();
     }
 
     private class QuadNode implements Serializable {
