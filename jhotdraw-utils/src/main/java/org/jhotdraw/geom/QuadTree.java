@@ -135,6 +135,9 @@ public class QuadTree<T> implements Serializable {
     public int getSize() {
         return root.objects.size();
     }
+    public int getOutsideSize() {
+        return outside.size();
+    }
 
     private class QuadNode implements Serializable {
 

@@ -16,7 +16,6 @@ public class QuadTreeTest {
 
     @BeforeMethod
     public void setUp() {
-        quadTree = new QuadTree<>();
     }
 
     @AfterMethod
@@ -24,38 +23,61 @@ public class QuadTreeTest {
 
     }
 
+    /**
+     * Test the add method of QuadNode
+     */
     @Test
-    public void testAdd() {
+    public void testNodeAdd() {
+        quadTree = new QuadTree<>();
+        assertEquals(quadTree.getSize(), 0);
+        quadTree.add(new Object(), new Rectangle2D.Double(1,1,1,1));
+        assertEquals(quadTree.getSize(), 1);
+    }
+
+    /**
+     * Test the add method of QuadTree
+     */
+    @Test
+    public void testTreeAdd() {
+        quadTree = new QuadTree<>();
+        assertEquals(quadTree.getSize(), 0, "Assert that the QuadTree is empty upon creation");
         assertBoundsInsideTree();
         assertBoundsOutsideTree();
         assertReorganizeTree();
     }
 
     private void assertBoundsInsideTree() {
+        quadTree = new QuadTree<>();
         // Adding bound to tree and arraylist
         Rectangle2D.Double bounds = new Rectangle2D.Double(0, 0, 10, 10);
         Object o = new Object();
         Collection<Object> objects = new ArrayList<>();
+
         quadTree.add(o, bounds);
         objects.add(o);
+
         // Assert that the bounds are inside the tree
         assertEquals(quadTree.findInside(bounds), objects);
-        quadTree.remove(o);
+        assertEquals(quadTree.getSize(), 1);
     }
 
     private void assertBoundsOutsideTree() {
+        quadTree = new QuadTree<>();
         // Add and assert bounds are outside the tree
-        Rectangle2D.Double failBounds = new Rectangle2D.Double(90000, 90000, 1, 1);
-        Object oFail = new Object();
-        Collection<Object> failObjects = new ArrayList<>();
-        failObjects.add(oFail);                                             // findInside() might be working wrongly.
-        quadTree.add(oFail, failBounds);                                    // failBounds should not be returned doing findInside
-        assertEquals(quadTree.findInside(failBounds), failObjects);         // it is in QuadTree in the outside map
-        quadTree.remove(oFail);
+        Rectangle2D.Double bounds = new Rectangle2D.Double(90000, 90000, 1, 1);
+        Object o = new Object();
+        Collection<Object> objects = new ArrayList<>();
+
+        objects.add(o);                                                 // findInside() might be working faulty.
+        quadTree.add(o, bounds);                                        // bounds should not be returned doing findInside
+                                                                        // it is in QuadTree in the outside map
+        assertEquals(quadTree.findInside(bounds), objects); // findInside() method is implemented faulty
+        assertEquals(quadTree.getSize(), 0);
+        assertEquals(quadTree.getOutsideSize(), 1);
     }
 
     private void assertReorganizeTree() {
-        assertEquals(quadTree.getSize(), 0);
+        quadTree = new QuadTree<>();
         // Trigger reorganize when adding new bounds until max capacity
         for (int i = 0; i <= quadTree.getMaxCapacity(); i++) {
             quadTree.add(new Object(), new Rectangle2D.Double(i, i, i, i));
