@@ -61,6 +61,12 @@ public class QuadTree<T> implements Serializable {
         root.join();
         outside.putAll(root.objects); // adds all bounds to the outside map
         root.objects.clear();
+        Rectangle2D.Double treeBounds = organizeTreeBounds();
+        organizeTree(treeBounds);
+        outside.clear();
+    }
+
+    private Rectangle2D.Double organizeTreeBounds() {
         Iterator<Map.Entry<T, Rectangle2D.Double>> i = outside.entrySet().iterator();
         Map.Entry<T, Rectangle2D.Double> entry = i.next();
         Rectangle2D.Double treeBounds = (Rectangle2D.Double) (entry.getValue()).clone();
@@ -69,13 +75,18 @@ public class QuadTree<T> implements Serializable {
             Rectangle2D.Double bounds = entry.getValue();
             treeBounds.add(bounds); // Joining the bounds to one big bound containing all bounds
         }
+        return treeBounds;
+    }
+
+    private void organizeTree(Rectangle2D.Double treeBounds) {
+        Map.Entry<T, Rectangle2D.Double> entry;
+        Iterator<Map.Entry<T, Rectangle2D.Double>> i;
         root.bounds = treeBounds; // New root is the joined bounds
         i = outside.entrySet().iterator(); // Resets iterator
         while (i.hasNext()) {
             entry = i.next();
             root.add(entry.getKey(), entry.getValue()); // Adds all bounds to the new big bound
         }
-        outside.clear();
     }
 
     public void remove(T o) {

@@ -24,17 +24,6 @@ public class QuadTreeTest {
     }
 
     /**
-     * Test the add method of QuadNode
-     */
-    @Test
-    public void testNodeAdd() {
-        quadTree = new QuadTree<>();
-        assertEquals(quadTree.getSize(), 0);
-        quadTree.add(new Object(), new Rectangle2D.Double(1,1,1,1));
-        assertEquals(quadTree.getSize(), 1);
-    }
-
-    /**
      * Test the add method of QuadTree
      */
     @Test
