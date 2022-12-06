@@ -32,7 +32,7 @@ import org.jhotdraw.draw.tool.Tool;
 import org.jhotdraw.geom.Dimension2DDouble;
 import org.jhotdraw.geom.Geom;
 import org.jhotdraw.geom.Insets2D;
-import org.jhotdraw.samples.svg.Gradient;
+import org.jhotdraw.samples.figures.Gradient;
 import org.jhotdraw.samples.svg.SVGAttributeKeys;
 import static org.jhotdraw.samples.svg.SVGAttributeKeys.*;
 

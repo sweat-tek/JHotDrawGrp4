@@ -19,7 +19,8 @@ import org.jhotdraw.draw.handle.ResizeHandleKit;
 import org.jhotdraw.draw.handle.TransformHandleKit;
 import org.jhotdraw.geom.Geom;
 import org.jhotdraw.geom.GrowStroke;
-import org.jhotdraw.samples.svg.Gradient;
+import org.jhotdraw.samples.figures.Gradient;
+import org.jhotdraw.samples.figures.Transformer;
 import org.jhotdraw.samples.svg.SVGAttributeKeys;
 import static org.jhotdraw.samples.svg.SVGAttributeKeys.*;
 
@@ -156,29 +157,8 @@ public class SVGEllipseFigure extends SVGAttributedFigure implements SVGFigure {
      */
     @Override
     public void transform(AffineTransform tx) {
-        if (get(TRANSFORM) != null) {
-            AffineTransform t = TRANSFORM.getClone(this);
-            t.preConcatenate(tx);
-            set(TRANSFORM, t);
-        } else if ((tx.getType() & (AffineTransform.TYPE_TRANSLATION)) != tx.getType()) {
-                TRANSFORM.setClone(this, tx);
-        } else {
-            Point2D.Double anchor = getStartPoint();
-            Point2D.Double lead = getEndPoint();
-            setBounds((Point2D.Double) tx.transform(anchor, anchor), (Point2D.Double) tx.transform(lead, lead));
-            transformAttributeKey(FILL_GRADIENT, tx);
-            transformAttributeKey(STROKE_GRADIENT, tx);
-        }
+        Transformer.transform(this, tx);
         invalidate();
-    }
-
-    private void transformAttributeKey(AttributeKey<Gradient> AKGradient, AffineTransform tx) {
-        if (get(AKGradient) != null
-                && !get(AKGradient).isRelativeToFigureBounds()) {
-            Gradient g = AKGradient.getClone(this);
-            g.transform(tx);
-            set(AKGradient, g);
-        }
     }
 
     @Override

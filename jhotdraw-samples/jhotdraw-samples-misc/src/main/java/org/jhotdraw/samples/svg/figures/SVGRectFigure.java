@@ -22,7 +22,7 @@ import org.jhotdraw.draw.handle.ResizeHandleKit;
 import org.jhotdraw.draw.handle.TransformHandleKit;
 import org.jhotdraw.geom.Geom;
 import org.jhotdraw.geom.GrowStroke;
-import org.jhotdraw.samples.svg.Gradient;
+import org.jhotdraw.samples.figures.Gradient;
 import org.jhotdraw.samples.svg.SVGAttributeKeys;
 import static org.jhotdraw.samples.svg.SVGAttributeKeys.*;
 

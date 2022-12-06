@@ -18,7 +18,7 @@ import org.jhotdraw.draw.handle.Handle;
 import org.jhotdraw.draw.handle.ResizeHandleKit;
 import org.jhotdraw.draw.handle.TransformHandleKit;
 import org.jhotdraw.geom.Geom;
-import org.jhotdraw.samples.odg.Gradient;
+import org.jhotdraw.samples.figures.Gradient;
 import org.jhotdraw.samples.odg.ODGAttributeKeys;
 import static org.jhotdraw.samples.odg.ODGAttributeKeys.*;
 
