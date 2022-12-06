@@ -60,6 +60,7 @@ import org.jhotdraw.util.prefs.PreferencesUtil;
  * @author Werner Randelshofer
  * @version $Id$
  */
+
 public class SVGDrawingPanel extends JPanel implements Disposable {
 
     private static final long serialVersionUID = 1L;

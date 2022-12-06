@@ -7,6 +7,7 @@
  */
 package org.jhotdraw.samples.svg.figures;
 
+import dk.sdu.mmmi.featuretracer.lib.FeatureEntryPoint;
 import org.jhotdraw.draw.figure.Figure;
 import org.jhotdraw.draw.*;
 
@@ -28,5 +29,6 @@ public interface SVGFigure extends Figure {
      * <li>A text has no characters</li>
      * </ul>
      */
+    @FeatureEntryPoint ("isEmpty")
     public boolean isEmpty();
 }

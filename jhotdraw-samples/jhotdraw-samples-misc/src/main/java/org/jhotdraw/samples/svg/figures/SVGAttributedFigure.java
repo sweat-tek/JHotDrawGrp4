@@ -7,6 +7,7 @@
  */
 package org.jhotdraw.samples.svg.figures;
 
+import dk.sdu.mmmi.featuretracer.lib.FeatureEntryPoint;
 import org.jhotdraw.draw.figure.AbstractAttributedFigure;
 import java.awt.*;
 import java.awt.event.*;
@@ -38,6 +39,7 @@ public abstract class SVGAttributedFigure extends AbstractAttributedFigure {
     }
 
     @Override
+    @FeatureEntryPoint ("draw")
     public void draw(Graphics2D g) {
         double opacity = get(OPACITY);
         opacity = Math.min(Math.max(0d, opacity), 1d);
@@ -75,6 +77,7 @@ public abstract class SVGAttributedFigure extends AbstractAttributedFigure {
      * This method is invoked before the rendered image of the figure is
      * composited.
      */
+    @FeatureEntryPoint ("drawFigure")
     public void drawFigure(Graphics2D g) {
         AffineTransform savedTransform = null;
         if (get(TRANSFORM) != null) {
@@ -98,6 +101,7 @@ public abstract class SVGAttributedFigure extends AbstractAttributedFigure {
     }
 
     @Override
+
     public <T> void set(AttributeKey<T> key, T newValue) {
         if (key == TRANSFORM) {
             invalidate();
