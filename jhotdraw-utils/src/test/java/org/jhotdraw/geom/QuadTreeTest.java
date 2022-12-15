@@ -16,7 +16,7 @@ public class QuadTreeTest {
     }
 
     @Test
-    public void testTreeIsEmptyUponCreation() {
+    public void testTreeIsEmpty_UponCreation() {
         quadTree = new QuadTree<>();
         assertEquals("Assert that the QuadTree is empty upon creation",
                 0, quadTree.getSize());
@@ -54,7 +54,7 @@ public class QuadTreeTest {
     }
 
     @Test
-    public void testBoundsOfObject_AreNotAdded_ToInside_WhenItShouldBeOutside() {
+    public void testBoundsOfObject_AreNotInside_WhenItShouldBeOutside() {
         quadTree = new QuadTree<>();
         Rectangle2D.Double bounds = new Rectangle2D.Double(90000, 90000, 1, 1);
         Object o = new Object();

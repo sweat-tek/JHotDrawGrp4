@@ -1,0 +1,108 @@
+{
+  "className": "org.jhotdraw.draw.figure.DuplicateActionJGivenTest",
+  "name": "Duplicate Action J Given",
+  "scenarios": [
+    {
+      "className": "org.jhotdraw.draw.figure.DuplicateActionJGivenTest",
+      "testMethodName": "duplicate_figures",
+      "description": "duplicate figures",
+      "tagIds": [],
+      "explicitParameters": [],
+      "derivedParameters": [],
+      "scenarioCases": [
+        {
+          "caseNr": 1,
+          "steps": [
+            {
+              "name": "a default drawing view",
+              "words": [
+                {
+                  "value": "Given",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "a default drawing view"
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 286484300,
+              "depth": 0,
+              "parentFailed": false
+            },
+            {
+              "name": "an ellipse",
+              "words": [
+                {
+                  "value": "and",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "an ellipse"
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 4245100,
+              "depth": 0,
+              "parentFailed": false
+            },
+            {
+              "name": "selecting the ellipse",
+              "words": [
+                {
+                  "value": "When",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "selecting the ellipse"
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 520500,
+              "depth": 0,
+              "parentFailed": false
+            },
+            {
+              "name": "duplicating it",
+              "words": [
+                {
+                  "value": "and",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "duplicating it"
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 106801900,
+              "depth": 0,
+              "parentFailed": false
+            },
+            {
+              "name": "a copy appear",
+              "words": [
+                {
+                  "value": "Then",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "a copy appear"
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 5063800,
+              "depth": 0,
+              "parentFailed": false
+            }
+          ],
+          "explicitArguments": [],
+          "derivedArguments": [],
+          "status": "SUCCESS",
+          "durationInNanos": 448874300
+        }
+      ],
+      "casesAsTable": false,
+      "durationInNanos": 448874300
+    }
+  ],
+  "tagMap": {}
+}
