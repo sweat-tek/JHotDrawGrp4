@@ -15,22 +15,27 @@ public class QuadTreeTest {
     public void tearDown() {
     }
 
+    @Test
+    public void testTreeIsEmptyUponCreation() {
+        quadTree = new QuadTree<>();
+        assertEquals("Assert that the QuadTree is empty upon creation",
+                0, quadTree.getSize());
+    }
+
     /**
      * Test the bounds added to the QuadTree
      * are inside the bounds of the tree
      */
-    @Test()
-    public void testBoundsInsideTree() {
+    @Test
+    public void testBoundsOfObject_AreInside_BoundsOfTree() {
         quadTree = new QuadTree<>();
-        assertEquals("Assert that the QuadTree is empty upon creation", 0,
-                quadTree.getSize());
         // Adding bound to tree and arraylist
         Rectangle2D.Double bounds = new Rectangle2D.Double(0, 0, 10, 10);
         Object o = new Object();
 
         quadTree.add(o, bounds);
         assertEquals("Assert that the bounds of the object are inside the bounds of the tree",
-                quadTree.getSize(), 1);
+                1, quadTree.getSize());
     }
 
     /**
@@ -38,16 +43,36 @@ public class QuadTreeTest {
      * are outside the bounds of the tree
      */
     @Test
-    public void testBoundsOutsideTree() {
+    public void testBoundsOfObject_AreOutside_BoundsOfTree() {
+        quadTree = new QuadTree<>();
+        Rectangle2D.Double bounds = new Rectangle2D.Double(90000, 90000, 1, 1);
+        Object o = new Object();
+
+        quadTree.add(o, bounds);
+        assertEquals("Assert that the bounds of the object are outside the bounds of the tree",
+                1, quadTree.getOutsideSize());
+    }
+
+    @Test
+    public void testBoundsOfObject_AreNotAdded_ToInside_WhenItShouldBeOutside() {
         quadTree = new QuadTree<>();
         Rectangle2D.Double bounds = new Rectangle2D.Double(90000, 90000, 1, 1);
         Object o = new Object();
 
         quadTree.add(o, bounds);
         assertEquals("Assert that the bounds of the object are not inside the bounds of the tree",
-                quadTree.getSize(), 0);
-        assertEquals("Assert that the bounds of the object are outside the bounds of the tree",
-                quadTree.getOutsideSize(), 1);
+                0, quadTree.getSize());
+    }
+
+    @Test
+    public void testTreeIsAt_MaxCapacity() {
+        quadTree = new QuadTree<>();
+
+        for (int i = 0; i <= quadTree.getMaxCapacity(); i++) {
+            quadTree.add(new Object(), new Rectangle2D.Double(i, i, i, i));
+        }
+        assertEquals("Assert that the tree is at max capacity",
+                quadTree.getMaxCapacity(), quadTree.getSize());
     }
 
     /**
@@ -55,17 +80,15 @@ public class QuadTreeTest {
      * when it has surpassed its max capacity
      */
     @Test
-    public void testReorganizeTree() {
+    public void testTreeIsReorganized_WhenItIs_AtMaxCapacity() {
         quadTree = new QuadTree<>();
 
         // Trigger reorganize when adding new bounds until max capacity
-        for (int i = 0; i <= quadTree.getMaxCapacity(); i++) {
+        for (int i = 0; i <= quadTree.getMaxCapacity()+1; i++) {
             quadTree.add(new Object(), new Rectangle2D.Double(i, i, i, i));
         }
-        assertEquals("Assert that the tree is at max capacity", quadTree.getSize(),
-                quadTree.getMaxCapacity());
-        quadTree.add(new Object(), new Rectangle2D.Double(1, 2, 3, 4));
-        assertEquals("Assert that the tree has been reorganized", quadTree.getSize(), 0);
+        assertEquals("Assert that the tree has been reorganized",
+                0, quadTree.getSize());
     }
 
 }
