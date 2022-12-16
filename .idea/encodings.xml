@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/jhotdraw-actions/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jhotdraw-actions/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jhotdraw-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jhotdraw-api/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jhotdraw-app/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jhotdraw-app/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jhotdraw-core/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jhotdraw-core/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jhotdraw-datatransfer/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jhotdraw-datatransfer/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jhotdraw-gui/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jhotdraw-gui/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jhotdraw-samples/jhotdraw-samples-mini/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jhotdraw-samples/jhotdraw-samples-mini/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jhotdraw-samples/jhotdraw-samples-misc/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jhotdraw-samples/jhotdraw-samples-misc/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jhotdraw-samples/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jhotdraw-samples/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jhotdraw-utils/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jhotdraw-utils/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jhotdraw-xml/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jhotdraw-xml/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+  </component>
+</project>

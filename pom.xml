@@ -8,6 +8,13 @@
 	<organization>
 		<name>JHotDraw</name>
 	</organization>
+	<repositories>
+		<repository>
+			<id>github</id>
+			<name>GitHub external Packages</name>
+			<url>https://maven.pkg.github.com/sweat-tek/MavenRepository</url>
+		</repository>
+	</repositories>
 	<licenses>
 		<license>
 			<name>GNU Library or Lesser General Public License (LGPL) V2.1</name>
@@ -37,7 +44,6 @@
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<version>3.1.1</version>
 				<configuration>
-					<additionalparam>-Xdoclint:none</additionalparam>
 					<failOnWarnings>false</failOnWarnings>
 					<failOnError>false</failOnError>
 				</configuration>
