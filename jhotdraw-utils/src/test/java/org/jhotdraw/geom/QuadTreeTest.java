@@ -1,6 +1,9 @@
 package org.jhotdraw.geom;
 
 import java.awt.geom.Rectangle2D;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.junit.*;
 import static org.junit.Assert.assertEquals;
 
@@ -89,6 +92,28 @@ public class QuadTreeTest {
         }
         assertEquals("Assert that the tree has been reorganized",
                 0, quadTree.getSize());
+    }
+
+    @Test
+    public void testUniteAllBounds_BoundsShouldNotChange() {
+        Map<Object, Rectangle2D.Double> outside = new HashMap<>();
+        outside.put(new Object(), new Rectangle2D.Double(0, 0, 1000, 1000));
+        outside.put(new Object(), new Rectangle2D.Double(0, 0, 1, 1));
+
+        Rectangle2D.Double unitedBounds = new TreeOrganizer<>().uniteAllBounds(outside);
+        assertEquals("Assert that the union of the bounds are equal to the first bounds",
+                new Rectangle2D.Double(0,0,1000,1000), unitedBounds);
+    }
+
+    @Test
+    public void testUniteAllBounds_BoundsShouldChange() {
+        Map<Object, Rectangle2D.Double> outside = new HashMap<>();
+        outside.put(new Object(), new Rectangle2D.Double(0, 0, 1000, 1000));
+        outside.put(new Object(), new Rectangle2D.Double(1000, 1000, 1, 1));
+
+        Rectangle2D.Double unitedBounds = new TreeOrganizer<>().uniteAllBounds(outside);
+        assertEquals("Assert that the union of the bounds are a new bounds equal to the two added up",
+                new Rectangle2D.Double(0,0,1001,1001), unitedBounds);
     }
 
 }
