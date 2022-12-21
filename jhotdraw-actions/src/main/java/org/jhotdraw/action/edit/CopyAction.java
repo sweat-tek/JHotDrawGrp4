@@ -11,7 +11,6 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-import dk.sdu.mmmi.featuretracer.lib.FeatureEntryPoint;
 import org.jhotdraw.datatransfer.ClipboardUtil;
 import org.jhotdraw.util.*;
 
