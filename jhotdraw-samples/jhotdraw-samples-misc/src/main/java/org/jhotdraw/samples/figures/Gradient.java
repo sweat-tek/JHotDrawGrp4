@@ -7,7 +7,6 @@
  */
 package org.jhotdraw.samples.figures;
 
-import org.jhotdraw.draw.AttributeKey;
 import org.jhotdraw.draw.figure.Figure;
 import java.awt.*;
 import java.awt.geom.AffineTransform;

@@ -102,7 +102,7 @@ public class QuadTreeTest {
 
         Rectangle2D.Double unitedBounds = new TreeOrganizer<>().uniteAllBounds(outside);
         assertEquals("Assert that the union of the bounds are equal to the first bounds",
-                new Rectangle2D.Double(0,0,1000,1000), unitedBounds);
+                new Rectangle2D.Double(0, 0, 1000, 1000), unitedBounds);
     }
 
     @Test
@@ -113,7 +113,8 @@ public class QuadTreeTest {
 
         Rectangle2D.Double unitedBounds = new TreeOrganizer<>().uniteAllBounds(outside);
         assertEquals("Assert that the union of the bounds are a new bounds equal to the two added up",
-                new Rectangle2D.Double(0,0,1001,1001), unitedBounds);
+                new Rectangle2D.Double(0, 0, 1001, 1001), unitedBounds);
+
     }
 
 }
