@@ -36,6 +36,8 @@ import org.jhotdraw.draw.tool.CreationTool;
 import org.jhotdraw.gui.JFileURIChooser;
 import org.jhotdraw.gui.action.ButtonFactory;
 import static org.jhotdraw.samples.odg.ODGAttributeKeys.*;
+
+import org.jhotdraw.samples.figures.Gradient;
 import org.jhotdraw.samples.odg.figures.ODGGroupFigure;
 import org.jhotdraw.samples.odg.figures.ODGPathFigure;
 import org.jhotdraw.samples.odg.figures.ODGRectFigure;

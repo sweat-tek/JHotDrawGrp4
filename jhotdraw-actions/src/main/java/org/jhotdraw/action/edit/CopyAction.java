@@ -10,6 +10,7 @@ package org.jhotdraw.action.edit;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+
 import org.jhotdraw.datatransfer.ClipboardUtil;
 import org.jhotdraw.util.*;
 

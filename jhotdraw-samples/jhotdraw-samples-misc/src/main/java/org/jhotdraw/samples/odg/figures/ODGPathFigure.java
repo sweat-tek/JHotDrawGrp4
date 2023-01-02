@@ -32,7 +32,7 @@ import org.jhotdraw.geom.BezierPath;
 import org.jhotdraw.geom.Geom;
 import org.jhotdraw.geom.GrowStroke;
 import org.jhotdraw.geom.Shapes;
-import org.jhotdraw.samples.odg.Gradient;
+import org.jhotdraw.samples.figures.Gradient;
 import org.jhotdraw.samples.odg.ODGAttributeKeys;
 import static org.jhotdraw.samples.odg.ODGAttributeKeys.*;
 import org.jhotdraw.samples.odg.ODGConstants;

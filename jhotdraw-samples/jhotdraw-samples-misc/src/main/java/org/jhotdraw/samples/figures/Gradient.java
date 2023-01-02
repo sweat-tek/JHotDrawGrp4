@@ -5,12 +5,11 @@
  * You may not use, copy or modify this file, except in compliance with the
  * accompanying license terms.
  */
-package org.jhotdraw.samples.svg;
+package org.jhotdraw.samples.figures;
 
 import org.jhotdraw.draw.figure.Figure;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
-import org.jhotdraw.draw.*;
 
 /**
  * Represents an SVG Gradient.

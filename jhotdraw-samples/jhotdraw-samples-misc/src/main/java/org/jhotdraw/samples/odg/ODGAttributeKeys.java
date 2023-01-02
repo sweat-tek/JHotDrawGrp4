@@ -10,6 +10,8 @@ package org.jhotdraw.samples.odg;
 import org.jhotdraw.draw.figure.Figure;
 import java.awt.*;
 import org.jhotdraw.draw.*;
+import org.jhotdraw.samples.figures.Gradient;
+
 import org.jhotdraw.samples.odg.ODGConstants.FillStyle;
 import org.jhotdraw.samples.odg.ODGConstants.StrokeStyle;
 import org.jhotdraw.util.ResourceBundleUtil;

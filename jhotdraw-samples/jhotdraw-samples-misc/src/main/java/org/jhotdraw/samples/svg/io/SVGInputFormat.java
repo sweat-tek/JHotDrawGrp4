@@ -35,7 +35,7 @@ import org.jhotdraw.formatter.FontFormatter;
 import org.jhotdraw.geom.BezierPath;
 import org.jhotdraw.io.Base64;
 import org.jhotdraw.io.StreamPosTokenizer;
-import org.jhotdraw.samples.svg.Gradient;
+import org.jhotdraw.samples.figures.Gradient;
 import static org.jhotdraw.samples.svg.SVGAttributeKeys.*;
 import org.jhotdraw.samples.svg.SVGAttributeKeys.TextAnchor;
 import static org.jhotdraw.samples.svg.SVGConstants.*;

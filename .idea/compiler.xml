@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="jhotdraw-actions" />
+        <module name="jhotdraw-utils" />
+        <module name="jhotdraw-api" />
+        <module name="jhotdraw-gui" />
+        <module name="jhotdraw-datatransfer" />
+        <module name="jhotdraw-core" />
+        <module name="jhotdraw-xml" />
+        <module name="jhotdraw-samples-misc" />
+        <module name="jhotdraw-app" />
+        <module name="jhotdraw-samples-mini" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>

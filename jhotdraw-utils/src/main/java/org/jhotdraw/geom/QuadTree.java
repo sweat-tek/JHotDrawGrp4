@@ -57,25 +57,24 @@ public class QuadTree<T> implements Serializable {
         }
     }
 
-    public void reorganize() {
+    private void reorganize() {
         root.join();
-        outside.putAll(root.objects);
+        outside.putAll(root.objects); // adds all bounds to the outside map
         root.objects.clear();
-        Iterator<Map.Entry<T, Rectangle2D.Double>> i = outside.entrySet().iterator();
-        Map.Entry<T, Rectangle2D.Double> entry = i.next();
-        Rectangle2D.Double treeBounds = (Rectangle2D.Double) (entry.getValue()).clone();
-        while (i.hasNext()) {
-            entry = i.next();
-            Rectangle2D.Double bounds = entry.getValue();
-            treeBounds.add(bounds);
-        }
-        root.bounds = treeBounds;
-        i = outside.entrySet().iterator();
-        while (i.hasNext()) {
-            entry = i.next();
-            root.add(entry.getKey(), entry.getValue());
-        }
+        Rectangle2D.Double treeBounds = new TreeOrganizer<T>().uniteAllBounds(outside);
+        reconstructTree(treeBounds);
         outside.clear();
+    }
+
+    private void reconstructTree(Rectangle2D.Double treeBounds) {
+        Map.Entry<T, Rectangle2D.Double> entry;
+        Iterator<Map.Entry<T, Rectangle2D.Double>> i;
+        root.bounds = treeBounds; // New root is the united bounds
+        i = outside.entrySet().iterator(); // Returns an iterator
+        while (i.hasNext()) {
+            entry = i.next();
+            root.add(entry.getKey(), entry.getValue()); // Adds all bounds to the new big bound
+        }
     }
 
     public void remove(T o) {
@@ -118,6 +117,25 @@ public class QuadTree<T> implements Serializable {
             }
         }
         return result;
+    }
+
+    public int getMaxCapacity() {
+        return maxCapacity;
+    }
+
+    public int getMinSize() {
+        return minSize;
+    }
+
+    public int getMaxOutside() {
+        return maxOutside;
+    }
+
+    public int getSize() {
+        return root.objects.size();
+    }
+    public int getOutsideSize() {
+        return outside.size();
     }
 
     private class QuadNode implements Serializable {
