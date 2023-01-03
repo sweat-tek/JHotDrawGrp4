@@ -40,5 +40,24 @@
 	  <artifactId>jhotdraw-actions</artifactId>
 	  <version>${project.version}</version>
 	 </dependency>
+        <dependency>
+            <groupId>dk.sdu.mmmi</groupId>
+            <artifactId>featuretracerlite</artifactId>
+            <version>1.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+            <scope>test</scope>
+        </dependency>
+		<dependency>
+			<groupId>com.tngtech.jgiven</groupId>
+			<artifactId>jgiven-junit</artifactId>
+			<version>1.0.0-RC6</version>
+			<scope>test</scope>
+		</dependency>
+
 	</dependencies>
 </project>
