@@ -69,7 +69,7 @@ public class SendToBackAction extends AbstractSelectedAction {
     @FeatureEntryPoint(value="SendToBack")
     public static void sendToBack(DrawingView view, Collection<Figure> figures) {
         Drawing drawing = view.getDrawing();
-        for (Figure figure : figures) { // XXX Shouldn't the figures be sorted here back to front?
+        for (Figure figure : drawing.sort(figures)) {
             drawing.sendToBack(figure);
         }
     }
