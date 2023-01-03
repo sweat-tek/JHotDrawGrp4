@@ -76,18 +76,15 @@ public class SVGRectFigure extends SVGAttributedFigure implements SVGFigure {
     /**
      * Creates a new instance.
      */
-    @FeatureEntryPoint ("SVGRectFigure_controller_1")
-    @Tracker
+
     public SVGRectFigure() {
         this(0, 0, 0, 0);
     }
-    @FeatureEntryPoint ("SVGRectFigure_controller_2")
-    @Tracker
+
     public SVGRectFigure(double x, double y, double width, double height) {
         this(x, y, width, height, 0, 0);
     }
-    @FeatureEntryPoint ("SVGRectFigure_controller_3")
-    @Tracker
+
     public SVGRectFigure(double x, double y, double width, double height, double rx, double ry) {
         roundrect = new RoundRectangle2D.Double(x, y, width, height, rx, ry);
         SVGAttributeKeys.setDefaults(this);
@@ -96,8 +93,6 @@ public class SVGRectFigure extends SVGAttributedFigure implements SVGFigure {
 
     // DRAWING
     @Override
-    @FeatureEntryPoint ("SVGRectFigure_drawFill")
-    @Tracker
     protected void drawFill(Graphics2D g) {
         if (getArcHeight() == 0d && getArcWidth() == 0d) {
             g.fill(roundrect.getBounds2D());
@@ -107,8 +102,6 @@ public class SVGRectFigure extends SVGAttributedFigure implements SVGFigure {
     }
 
     @Override
-    @FeatureEntryPoint ("SVGRectFigure_drawStroke")
-    @Tracker
     protected void drawStroke(Graphics2D g) {
         if (roundrect.archeight == 0 && roundrect.arcwidth == 0) {
             g.draw(roundrect.getBounds2D());
@@ -200,15 +193,11 @@ public class SVGRectFigure extends SVGAttributedFigure implements SVGFigure {
     }
 
     @Override
-    @FeatureEntryPoint ("SVGRectFigure_getBounds")
-    @Tracker
     public Rectangle2D.Double getBounds() {
         return (Rectangle2D.Double) roundrect.getBounds2D();
     }
 
     @Override
-    @FeatureEntryPoint ("SVGRectFigure_getDrawingArea")
-    @Tracker
     public Rectangle2D.Double getDrawingArea() {
         Rectangle2D rx = getTransformedShape().getBounds2D();
         Rectangle2D.Double r = (rx instanceof Rectangle2D.Double) ? (Rectangle2D.Double) rx : new Rectangle2D.Double(rx.getX(), rx.getY(), rx.getWidth(), rx.getHeight());
@@ -239,8 +228,6 @@ public class SVGRectFigure extends SVGAttributedFigure implements SVGFigure {
     }
 
     @Override
-    @FeatureEntryPoint ("SVGRectFigure_setBounds")
-    @Tracker
     public void setBounds(Point2D.Double anchor, Point2D.Double lead) {
         invalidateTransformedShape();
         roundrect.x = Math.min(anchor.x, lead.x);
@@ -249,15 +236,12 @@ public class SVGRectFigure extends SVGAttributedFigure implements SVGFigure {
         roundrect.height = Math.max(0.1, Math.abs(lead.y - anchor.y));
         invalidate();
     }
-    @FeatureEntryPoint ("SVGRectFigure_invalidateTransformedShape")
-    @Tracker
     private void invalidateTransformedShape() {
         cachedTransformedShape = null;
         cachedHitShape = null;
     }
 
-    @FeatureEntryPoint ("SVGRectFigure_getTransformedShape")
-    @Tracker
+
     private Shape getTransformedShape() {
         if (cachedTransformedShape == null) {
             if (getArcHeight() == 0 || getArcWidth() == 0) {
@@ -271,9 +255,6 @@ public class SVGRectFigure extends SVGAttributedFigure implements SVGFigure {
         }
         return cachedTransformedShape;
     }
-    @FeatureEntryPoint ("SVGRectFigure_getHitShape")
-    @Tracker
-
     private Shape getHitShape() {
         if (cachedHitShape == null) {
             if (get(FILL_COLOR) != null || get(FILL_GRADIENT) != null) {
@@ -293,8 +274,6 @@ public class SVGRectFigure extends SVGAttributedFigure implements SVGFigure {
      * @param tx The transformation.
      */
     @Override
-    @FeatureEntryPoint ("SVGRectFigure_transform")
-    @Tracker
     public void transform(AffineTransform tx) {
         invalidateTransformedShape();
         if (get(TRANSFORM) != null
@@ -329,8 +308,6 @@ public class SVGRectFigure extends SVGAttributedFigure implements SVGFigure {
     }
 
     @Override
-    @FeatureEntryPoint ("SVGRectFigure_restoreTransformTo")
-    @Tracker
     public void restoreTransformTo(Object geometry) {
         invalidateTransformedShape();
         Object[] restoreData = (Object[]) geometry;
@@ -341,8 +318,6 @@ public class SVGRectFigure extends SVGAttributedFigure implements SVGFigure {
     }
 
     @Override
-    @FeatureEntryPoint ("SVGRectFigure_getTransformRestoreData")
-    @Tracker
     public Object getTransformRestoreData() {
         return new Object[]{
             roundrect.clone(),
@@ -353,8 +328,6 @@ public class SVGRectFigure extends SVGAttributedFigure implements SVGFigure {
 
     // EDITING
     @Override
-    @FeatureEntryPoint ("SVGRectFigure_createHandles")
-    @Tracker
     public Collection<Handle> createHandles(int detailLevel) {
         LinkedList<Handle> handles = new LinkedList<Handle>();
         switch (detailLevel % 2) {
@@ -377,8 +350,6 @@ public class SVGRectFigure extends SVGAttributedFigure implements SVGFigure {
 
     // CLONING
     @Override
-    @FeatureEntryPoint ("SVGRectFigure_clone")
-    @Tracker
     public SVGRectFigure clone() {
         SVGRectFigure that = (SVGRectFigure) super.clone();
         that.roundrect = (RoundRectangle2D.Double) this.roundrect.clone();

@@ -59,7 +59,7 @@ public class ToolsToolBar extends AbstractToolBar {
         setName(labels.getString("tools.toolbar"));
     }
 
-    @FeatureEntryPoint ("ToolsToolBar_createDisclosedComponent")
+
     @Override
     protected JComponent createDisclosedComponent(int state) {
         JPanel p = null;
