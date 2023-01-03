@@ -30,9 +30,9 @@
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.testng</groupId>
-			<artifactId>testng</artifactId>
-			<version>6.8.21</version>
+			<groupId>com.tngtech.jgiven</groupId>
+			<artifactId>jgiven-tests</artifactId>
+			<version>1.2.4</version>
 			<scope>test</scope>
 		</dependency>
 	 <dependency>

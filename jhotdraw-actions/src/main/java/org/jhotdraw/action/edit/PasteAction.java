@@ -11,6 +11,7 @@ import java.awt.*;
 import java.awt.datatransfer.*;
 import java.awt.event.*;
 import javax.swing.*;
+
 import org.jhotdraw.datatransfer.ClipboardUtil;
 import org.jhotdraw.util.*;
 

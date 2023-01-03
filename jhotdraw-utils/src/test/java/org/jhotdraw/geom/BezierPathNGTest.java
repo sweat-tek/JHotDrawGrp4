@@ -21,12 +21,10 @@ package org.jhotdraw.geom;
 import java.awt.geom.Path2D;
 import java.awt.geom.PathIterator;
 import java.awt.geom.Point2D;
-import static org.testng.Assert.*;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+
+import org.junit.*;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  *
@@ -45,15 +43,15 @@ public class BezierPathNGTest {
     public static void tearDownClass() throws Exception {
     }
 
-    @BeforeMethod
+    @Before
     public void setUpMethod() throws Exception {
     }
 
-    @AfterMethod
+    @After
     public void tearDownMethod() throws Exception {
     }
 
-    @Test
+    @Test()
     public void testToGeneralPath() {
         BezierPath instance = new BezierPath();
         Point2D.Double c0 = new Point2D.Double(0.0004, 0.002);
@@ -67,8 +65,8 @@ public class BezierPathNGTest {
         while (pathIterator.isDone() == false) {
             pathIterator.currentSegment(coords);
             for (int j = 0; j < 3; j++) {
-                assertEquals(coords[0], instance.get(i).getControlPoint(j).x);
-                assertEquals(coords[1], instance.get(i).getControlPoint(j).y);
+                assertEquals(coords[0], instance.get(i).getControlPoint(j).x, 0);
+                assertEquals(coords[1], instance.get(i).getControlPoint(j).y, 0);
             }
             i++;
             pathIterator.next();
@@ -107,8 +105,8 @@ public class BezierPathNGTest {
         while (pathIterator.isDone() == false) {
             pathIterator.currentSegment(coords);
             for (int j = 0; j < 3; j++) {
-                assertEquals(coords[0], instance.get(i).getControlPoint(j).x);
-                assertEquals(coords[1], instance.get(i).getControlPoint(j).y);
+                assertEquals(coords[0], instance.get(i).getControlPoint(j).x, 0);
+                assertEquals(coords[1], instance.get(i).getControlPoint(j).y, 0);
             }
             i++;
             pathIterator.next();
@@ -128,8 +126,8 @@ public class BezierPathNGTest {
         while (pathIterator.isDone() == false) {
             pathIterator.currentSegment(coords);
             for (int j = 0; j < 3; j++) {
-                assertEquals(coords[0], instance.get(i).getControlPoint(j).x);
-                assertEquals(coords[1], instance.get(i).getControlPoint(j).y);
+                assertEquals(coords[0], instance.get(i).getControlPoint(j).x, 0);
+                assertEquals(coords[1], instance.get(i).getControlPoint(j).y, 0);
             }
             i++;
             pathIterator.next();

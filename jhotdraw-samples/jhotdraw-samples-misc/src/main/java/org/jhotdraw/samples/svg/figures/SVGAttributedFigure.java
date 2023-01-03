@@ -7,6 +7,7 @@
  */
 package org.jhotdraw.samples.svg.figures;
 
+import dk.sdu.mmmi.featuretracer.lib.FeatureEntryPoint;
 import org.jhotdraw.draw.figure.AbstractAttributedFigure;
 import java.awt.*;
 import java.awt.event.*;
@@ -36,7 +37,7 @@ public abstract class SVGAttributedFigure extends AbstractAttributedFigure {
      */
     public SVGAttributedFigure() {
     }
-
+@FeatureEntryPoint(value = "Ellipse")
     @Override
     public void draw(Graphics2D g) {
         double opacity = get(OPACITY);
@@ -49,26 +50,30 @@ public abstract class SVGAttributedFigure extends AbstractAttributedFigure {
                     Rectangle2D.intersect(drawingArea, clipBounds, drawingArea);
                 }
                 if (!drawingArea.isEmpty()) {
-                    BufferedImage buf = new BufferedImage(
-                            Math.max(1, (int) ((2 + drawingArea.width) * g.getTransform().getScaleX())),
-                            Math.max(1, (int) ((2 + drawingArea.height) * g.getTransform().getScaleY())),
-                            BufferedImage.TYPE_INT_ARGB);
-                    Graphics2D gr = buf.createGraphics();
-                    gr.scale(g.getTransform().getScaleX(), g.getTransform().getScaleY());
-                    gr.translate((int) -drawingArea.x, (int) -drawingArea.y);
-                    gr.setRenderingHints(g.getRenderingHints());
-                    drawFigure(gr);
-                    gr.dispose();
-                    Composite savedComposite = g.getComposite();
-                    g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, (float) opacity));
-                    g.drawImage(buf, (int) drawingArea.x, (int) drawingArea.y,
-                            2 + (int) drawingArea.width, 2 + (int) drawingArea.height, null);
-                    g.setComposite(savedComposite);
+                    drawFigureOnExistingDrawing(g, (float) opacity, drawingArea);
                 }
             } else {
                 drawFigure(g);
             }
         }
+    }
+
+    public void drawFigureOnExistingDrawing(Graphics2D g, Float opacity, Rectangle2D.Double drawingArea) {
+        BufferedImage buf = new BufferedImage(
+                Math.max(1, (int) ((2 + drawingArea.width) * g.getTransform().getScaleX())),
+                Math.max(1, (int) ((2 + drawingArea.height) * g.getTransform().getScaleY())),
+                BufferedImage.TYPE_INT_ARGB);
+        Graphics2D gr = buf.createGraphics();
+        gr.scale(g.getTransform().getScaleX(), g.getTransform().getScaleY());
+        gr.translate((int) -drawingArea.x, (int) -drawingArea.y);
+        gr.setRenderingHints(g.getRenderingHints());
+        drawFigure(gr);
+        gr.dispose();
+        Composite savedComposite = g.getComposite();
+        g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, opacity));
+        g.drawImage(buf, (int) drawingArea.x, (int) drawingArea.y,
+                2 + (int) drawingArea.width, 2 + (int) drawingArea.height, null);
+        g.setComposite(savedComposite);
     }
 
     /**
