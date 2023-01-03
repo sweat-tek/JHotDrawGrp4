@@ -140,13 +140,7 @@ public class DeleteAction extends TextAction {
                 Caret caret = c.getCaret();
                 int dot = caret.getDot();
                 int mark = caret.getMark();
-                if (dot != mark) {
-                    doc.remove(Math.min(dot, mark), Math.abs(dot - mark));
-                    beep = false;
-                } else if (dot < doc.getLength()) {
-                    doc.remove(dot, 1);
-                    beep = false;
-                }
+                beep = isBeep(beep, doc, dot, mark);
             } catch (BadLocationException bl) {
                 // allowed empty
             }
@@ -154,5 +148,16 @@ public class DeleteAction extends TextAction {
         if (beep) {
             Toolkit.getDefaultToolkit().beep();
         }
+    }
+
+    private static boolean isBeep(boolean beep, Document doc, int dot, int mark) throws BadLocationException {
+        if (dot != mark) {
+            doc.remove(Math.min(dot, mark), Math.abs(dot - mark));
+            beep = false;
+        } else if (dot < doc.getLength()) {
+            doc.remove(dot, 1);
+            beep = false;
+        }
+        return beep;
     }
 }
