@@ -126,7 +126,7 @@ public class DeleteAction extends TextAction {
                 try {
                     deleteNextChar(evt);
                 } catch (Exception e) {
-                    ;
+                    // allowed empty
                 }
             }
         }

@@ -7,8 +7,11 @@
  */
 package org.jhotdraw.samples.svg.gui;
 
+import dk.sdu.mmmi.featuretracer.lib.FeatureEntryPoint;
+import org.jhotdraw.api.app.Disposable;
 import org.jhotdraw.gui.plaf.palette.PaletteButtonUI;
 import java.awt.*;
+import java.util.LinkedList;
 import javax.swing.*;
 import javax.swing.border.*;
 import org.jhotdraw.draw.DrawingEditor;
@@ -22,16 +25,19 @@ import org.jhotdraw.util.*;
  * @author Werner Randelshofer
  * @version $Id$
  */
+
 public class ArrangeToolBar extends AbstractToolBar {
 
     private static final long serialVersionUID = 1L;
     private SelectionComponentDisplayer displayer;
+    private ResourceBundleUtil labels;
 
     /**
      * Creates new instance.
      */
+    @FeatureEntryPoint(value="ArrangeToolbar")
     public ArrangeToolBar() {
-        ResourceBundleUtil labels = ResourceBundleUtil.getBundle("org.jhotdraw.samples.svg.Labels");
+        labels = ResourceBundleUtil.getBundle("org.jhotdraw.samples.svg.Labels");
         setName(labels.getString(getID() + ".toolbar"));
     }
 
@@ -50,49 +56,79 @@ public class ArrangeToolBar extends AbstractToolBar {
 
     @Override
     protected JComponent createDisclosedComponent(int state) {
-        JPanel p = null;
-        switch (state) {
-            case 1: 
-                p = new JPanel();
-                p.setOpaque(false);
-                p.setBorder(new EmptyBorder(5, 5, 5, 8));
-                // Abort if no editor is set
-                if (editor == null) {
-                    break;
-                }
-                ResourceBundleUtil labels = ResourceBundleUtil.getBundle("org.jhotdraw.samples.svg.Labels");
-                GridBagLayout layout = new GridBagLayout();
-                p.setLayout(layout);
-                GridBagConstraints gbc;
-                AbstractButton btn;
-                AbstractSelectedAction d;
-                btn = new JButton(d = new BringToFrontAction(editor));
-                disposables.add(d);
-                btn.setUI((PaletteButtonUI) PaletteButtonUI.createUI(btn));
-                btn.setText(null);
-                labels.configureToolBarButton(btn, BringToFrontAction.ID);
-                btn.putClientProperty("hideActionText", Boolean.TRUE);
-                gbc = new GridBagConstraints();
-                gbc.gridy = 0;
-                gbc.anchor = GridBagConstraints.EAST;
-                p.add(btn, gbc);
-                btn = new JButton(d = new SendToBackAction(editor));
-                disposables.add(d);
-                btn.setUI((PaletteButtonUI) PaletteButtonUI.createUI(btn));
-                btn.setText(null);
-                labels.configureToolBarButton(btn, SendToBackAction.ID);
-                btn.putClientProperty("hideActionText", Boolean.TRUE);
-                btn.setUI((PaletteButtonUI) PaletteButtonUI.createUI(btn));
-                gbc = new GridBagConstraints();
-                gbc.gridy = 1;
-                gbc.insets = new Insets(3, 0, 0, 0);
-                gbc.anchor = GridBagConstraints.NORTH;
-                gbc.weighty = 1f;
-                p.add(btn, gbc);
-
-            break;
+        if (state != 1) {
+            return null;
         }
+        // Abort if no editor is set
+        if (editor == null) {
+            return null;
+        }
+        JPanel panel = createToolbarPanel();
+
+        panel.add(createPanelButton(disposables, new SendToBackAction(editor)), createBackGrid());
+        panel.add(createPanelButton(disposables, new BringToFrontAction(editor)), createFrontGrid());
+
+        return panel;
+    }
+
+    /**
+     * Creates the toolbar panel for the Arrange feature
+     */
+    private JPanel createToolbarPanel(){
+        JPanel p = new JPanel();
+        p.setOpaque(false);
+        p.setBorder(new EmptyBorder(5, 5, 5, 8));
+        GridBagLayout layout = new GridBagLayout();
+        p.setLayout(layout);
         return p;
+    }
+
+    private AbstractButton createPanelButton(LinkedList<Disposable> disposables, BringToFrontAction action){
+        disposables.add(action);
+        return createPanelButtonFactory(action, action.ID);
+    }
+
+    private AbstractButton createPanelButton(LinkedList<Disposable> disposables, SendToBackAction action){
+        disposables.add(action);
+        return createPanelButtonFactory(action, action.ID);
+    }
+
+    /**
+     * Factory method for creating the buttons
+     * @param buttonAction The action the button has to perform.
+     * @param actionID The ID of the action the button performs.
+     * @return
+     */
+    private AbstractButton createPanelButtonFactory(AbstractSelectedAction buttonAction, String actionID){
+        AbstractButton btn = new JButton(buttonAction);
+        btn.setUI((PaletteButtonUI) PaletteButtonUI.createUI(btn));
+        btn.setText(null);
+        labels.configureToolBarButton(btn, actionID);
+        btn.putClientProperty("hideActionText", Boolean.TRUE);
+
+        return btn;
+    }
+
+    /**
+     * Creates the grid layout for the BringToFront button
+     */
+    private GridBagConstraints createFrontGrid(){
+        GridBagConstraints frontButtonGrid = new GridBagConstraints();
+        frontButtonGrid.gridy = 1;
+        frontButtonGrid.insets = new Insets(3, 0, 0, 0);
+        frontButtonGrid.anchor = GridBagConstraints.NORTH;
+        frontButtonGrid.weighty = 1f;
+        return frontButtonGrid;
+    }
+
+    /**
+     * Creates the grid layout for the SendToBack button
+     */
+    private GridBagConstraints createBackGrid(){
+        GridBagConstraints backButtonGrid = new GridBagConstraints();
+        backButtonGrid.gridy = 0;
+        backButtonGrid.anchor = GridBagConstraints.EAST;
+        return backButtonGrid;
     }
 
     /**
