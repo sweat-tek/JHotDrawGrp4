@@ -58,7 +58,7 @@ public class ArrangeToolBar extends AbstractToolBar {
     protected JComponent createDisclosedComponent(int state) {
         if (state != 1) {
             return null;
-        };
+        }
         // Abort if no editor is set
         if (editor == null) {
             return null;
