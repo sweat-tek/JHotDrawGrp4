@@ -9,13 +9,9 @@ on:
   pull_request:
     branches: [ "develop" ]
 
-
-
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
     - name: Set up JDK 11
@@ -24,16 +20,8 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: maven
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml
-      
-    - name: Run the Maven verify phase
-      run: mvn --batch-mode --update-snapshots verify
-      
-    - name: Build with Maven
-      run: mvn --batch-mode --update-snapshots verify
-      
-    - name: Run all Unit test classes
-      run:  mvn test
-      
-      
+    - name: Build and test with Maven
+      run: mvn -s maven-settings.xml --batch-mode --update-snapshots verify
+      env:
+        USER_NAME: ${{ secrets.USER_NAME }}
+        PASSWORD: ${{ secrets.PASSWORD }}

@@ -10,6 +10,7 @@ package org.jhotdraw.samples.svg;
 import org.jhotdraw.draw.figure.Figure;
 import java.awt.*;
 import org.jhotdraw.draw.*;
+import org.jhotdraw.samples.figures.Gradient;
 import org.jhotdraw.util.ResourceBundleUtil;
 
 /**
