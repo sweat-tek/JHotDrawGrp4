@@ -1,7 +1,6 @@
 package org.jhotdraw.draw.action;
 
 import com.tngtech.jgiven.Stage;
-import com.tngtech.jgiven.annotation.BeforeStage;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import org.jhotdraw.draw.*;
 import org.jhotdraw.draw.figure.EllipseFigure;
@@ -19,8 +18,8 @@ public class GivenOneDrawing extends Stage<GivenOneDrawing> {
     private Figure selectedFigure;
 
     public GivenOneDrawing oneFigureOrMore(){
-        Figure figure = new RectangleFigure(0,0,100,100);
-        Figure figureTwo = new EllipseFigure(0,0,100,150);
+        Figure figure = new RectangleFigure(0, 0, 100, 100);
+        Figure figureTwo = new EllipseFigure(0, 0, 100, 150);
 
         editor.getActiveView().getDrawing().add(figure);
         editor.getActiveView().getDrawing().add(figureTwo);
