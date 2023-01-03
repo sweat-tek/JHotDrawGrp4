@@ -11,14 +11,21 @@ import java.awt.geom.Point2D;
 import java.util.List;
 
 
-public class SendToBackActionTest {
+public class ArrangeActionTest {
 
+    /**
+     * Add figures to the view.
+     * @param view
+     */
     void createSetup(DefaultDrawingView view){
         view.setDrawing(new DefaultDrawing());
         view.getDrawing().add(new RectangleFigure(10, 10, 100, 100));
         view.getDrawing().add(new RectangleFigure(10, 10, 100, 150));
     }
 
+    /**
+     * Test that the setup function works as intended.
+     */
     @Test
     public void testCreateSetupNotEmpty(){
         DefaultDrawingView view = new DefaultDrawingView();
@@ -29,7 +36,9 @@ public class SendToBackActionTest {
                 figures.isEmpty());
     }
 
-
+    /**
+     * Test that if you send a figure to the back that it actually is send to the back.
+     */
     @Test
     public void testSendToBack(){
         DefaultDrawingView view = new DefaultDrawingView();
@@ -47,6 +56,26 @@ public class SendToBackActionTest {
 
         Assert.assertTrue("bottomFigure index should be greater than topFigure index.",
                 view.getDrawing().indexOf(bottomFigure) > view.getDrawing().indexOf(topFigure)
+        );
+    }
+
+    @Test
+    public void testBringToFront(){
+        DefaultDrawingView view = new DefaultDrawingView();
+        createSetup(view);
+
+        Point2D.Double point =  view.getDrawing().getStartPoint();
+        Figure topFigure = view.getDrawing().findFigure(point);
+        Figure bottomFigure = view.getDrawing().findFigureBehind(point, topFigure);
+
+        Assert.assertTrue("bottomFigure index should be greater than topFigure index.",
+                view.getDrawing().indexOf(bottomFigure) < view.getDrawing().indexOf(topFigure)
+        );
+
+        view.getDrawing().bringToFront(bottomFigure); // Bring figure to the front
+
+        Assert.assertTrue("bottomFigure index should be greater than topFigure index since it was moved to the front.",
+                view.getDrawing().indexOf(topFigure) < view.getDrawing().indexOf(bottomFigure)
         );
     }
 }
