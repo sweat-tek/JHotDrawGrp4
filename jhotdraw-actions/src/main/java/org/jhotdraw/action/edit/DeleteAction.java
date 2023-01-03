@@ -13,6 +13,8 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import javax.swing.JComponent;
 import javax.swing.text.*;
+
+import dk.sdu.mmmi.featuretracer.lib.FeatureEntryPoint;
 import org.jhotdraw.api.gui.EditableComponent;
 import org.jhotdraw.beans.WeakPropertyChangeListener;
 import org.jhotdraw.util.*;
@@ -108,6 +110,7 @@ public class DeleteAction extends TextAction {
         labels.configureAction(this, ID);
     }
 
+    @FeatureEntryPoint(value = "Delete")
     @Override
     public void actionPerformed(ActionEvent evt) {
         JComponent c = target;
@@ -120,7 +123,11 @@ public class DeleteAction extends TextAction {
             if (c instanceof EditableComponent) {
                 ((EditableComponent) c).delete();
             } else {
-                deleteNextChar(evt);
+                try {
+                    deleteNextChar(evt);
+                } catch (Exception e) {
+                    ;
+                }
             }
         }
     }
@@ -129,7 +136,7 @@ public class DeleteAction extends TextAction {
      * This method was copied from
      * DefaultEditorKit.DeleteNextCharAction.actionPerformed(ActionEvent).
      */
-    public void deleteNextChar(ActionEvent e) {
+    public void deleteNextChar(ActionEvent e) throws Exception {
         JTextComponent c = getTextComponent(e);
         boolean beep = true;
         if ((c != null) && (c.isEditable())) {
@@ -138,12 +145,9 @@ public class DeleteAction extends TextAction {
                 Caret caret = c.getCaret();
                 int dot = caret.getDot();
                 int mark = caret.getMark();
-                if (dot != mark) {
-                    doc.remove(Math.min(dot, mark), Math.abs(dot - mark));
-                    beep = false;
-                } else if (dot < doc.getLength()) {
-                    doc.remove(dot, 1);
-                    beep = false;
+                beep = isBeep(beep, doc, dot, mark);
+                if (!beep){
+                    throw new Exception("Beep is False");
                 }
             } catch (BadLocationException bl) {
                 // allowed empty
@@ -151,6 +155,18 @@ public class DeleteAction extends TextAction {
         }
         if (beep) {
             Toolkit.getDefaultToolkit().beep();
+            throw new UnsupportedOperationException("Beep is True");
         }
+    }
+
+    private static boolean isBeep(boolean beep, Document doc, int dot, int mark) throws BadLocationException {
+        if (dot != mark) {
+            doc.remove(Math.min(dot, mark), Math.abs(dot - mark));
+            beep = false;
+        } else if (dot < doc.getLength()) {
+            doc.remove(dot, 1);
+            beep = false;
+        }
+        return beep;
     }
 }

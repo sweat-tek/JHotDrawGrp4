@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/jhotdraw.iml" filepath="$PROJECT_DIR$/jhotdraw.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jhotdraw-actions/jhotdraw-actions.iml" filepath="$PROJECT_DIR$/jhotdraw-actions/jhotdraw-actions.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jhotdraw-api/jhotdraw-api.iml" filepath="$PROJECT_DIR$/jhotdraw-api/jhotdraw-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jhotdraw-app/jhotdraw-app.iml" filepath="$PROJECT_DIR$/jhotdraw-app/jhotdraw-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jhotdraw-core/jhotdraw-core.iml" filepath="$PROJECT_DIR$/jhotdraw-core/jhotdraw-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jhotdraw-datatransfer/jhotdraw-datatransfer.iml" filepath="$PROJECT_DIR$/jhotdraw-datatransfer/jhotdraw-datatransfer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jhotdraw-gui/jhotdraw-gui.iml" filepath="$PROJECT_DIR$/jhotdraw-gui/jhotdraw-gui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jhotdraw-samples/jhotdraw-samples.iml" filepath="$PROJECT_DIR$/jhotdraw-samples/jhotdraw-samples.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jhotdraw-samples/jhotdraw-samples-mini/jhotdraw-samples-mini.iml" filepath="$PROJECT_DIR$/jhotdraw-samples/jhotdraw-samples-mini/jhotdraw-samples-mini.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jhotdraw-samples/jhotdraw-samples-misc/jhotdraw-samples-misc.iml" filepath="$PROJECT_DIR$/jhotdraw-samples/jhotdraw-samples-misc/jhotdraw-samples-misc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jhotdraw-utils/jhotdraw-utils.iml" filepath="$PROJECT_DIR$/jhotdraw-utils/jhotdraw-utils.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jhotdraw-xml/jhotdraw-xml.iml" filepath="$PROJECT_DIR$/jhotdraw-xml/jhotdraw-xml.iml" />
+    </modules>
+  </component>
+</project>

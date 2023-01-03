@@ -10,6 +10,8 @@ package org.jhotdraw.action.edit;
 import java.awt.event.*;
 import java.beans.*;
 import javax.swing.*;
+
+import dk.sdu.mmmi.featuretracer.lib.FeatureEntryPoint;
 import org.jhotdraw.action.AbstractViewAction;
 import org.jhotdraw.api.app.Application;
 import org.jhotdraw.api.app.View;
@@ -101,7 +103,7 @@ public class RedoAction extends AbstractViewAction {
             redoActionInView.removePropertyChangeListener(redoActionPropertyListener);
         }
     }
-
+    @FeatureEntryPoint(value= "Redo")
     @Override
     public void actionPerformed(ActionEvent e) {
         Action realAction = getRealRedoAction();

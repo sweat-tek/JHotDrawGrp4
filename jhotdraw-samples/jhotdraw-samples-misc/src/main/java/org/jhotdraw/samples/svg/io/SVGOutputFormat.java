@@ -37,7 +37,7 @@ import org.jhotdraw.draw.AttributeKeys.WindingRule;
 import org.jhotdraw.draw.io.OutputFormat;
 import org.jhotdraw.geom.BezierPath;
 import org.jhotdraw.io.Base64;
-import org.jhotdraw.samples.svg.Gradient;
+import org.jhotdraw.samples.figures.Gradient;
 import org.jhotdraw.samples.svg.LinearGradient;
 import org.jhotdraw.samples.svg.RadialGradient;
 import static org.jhotdraw.samples.svg.SVGAttributeKeys.*;

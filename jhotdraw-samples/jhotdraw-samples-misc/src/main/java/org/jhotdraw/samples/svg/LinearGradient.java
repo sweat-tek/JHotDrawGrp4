@@ -12,6 +12,7 @@ import java.awt.*;
 import java.awt.geom.*;
 import java.util.Arrays;
 import org.jhotdraw.draw.*;
+import org.jhotdraw.samples.figures.Gradient;
 
 /**
  * Represents an SVG LinearGradient.

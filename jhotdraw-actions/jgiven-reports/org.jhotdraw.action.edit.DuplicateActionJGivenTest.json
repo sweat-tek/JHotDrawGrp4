@@ -1,0 +1,92 @@
+{
+  "className": "org.jhotdraw.action.edit.DuplicateActionJGivenTest",
+  "name": "Duplicate Action J Given",
+  "scenarios": [
+    {
+      "className": "org.jhotdraw.action.edit.DuplicateActionJGivenTest",
+      "testMethodName": "duplicate_the_figures",
+      "description": "duplicate the figures",
+      "tagIds": [],
+      "explicitParameters": [],
+      "derivedParameters": [],
+      "scenarioCases": [
+        {
+          "caseNr": 1,
+          "steps": [
+            {
+              "name": "some figures in a drawing view",
+              "words": [
+                {
+                  "value": "Given",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "some figures in a drawing view"
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 5774700,
+              "depth": 0,
+              "parentFailed": false
+            },
+            {
+              "name": "selecting them",
+              "words": [
+                {
+                  "value": "When",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "selecting them"
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 581400,
+              "depth": 0,
+              "parentFailed": false
+            },
+            {
+              "name": "duplicating them",
+              "words": [
+                {
+                  "value": "and",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "duplicating them"
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 468200,
+              "depth": 0,
+              "parentFailed": false
+            },
+            {
+              "name": "copies appear",
+              "words": [
+                {
+                  "value": "Then",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "copies appear"
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 481300,
+              "depth": 0,
+              "parentFailed": false
+            }
+          ],
+          "explicitArguments": [],
+          "derivedArguments": [],
+          "status": "SUCCESS",
+          "durationInNanos": 43710900
+        }
+      ],
+      "casesAsTable": false,
+      "durationInNanos": 43710900
+    }
+  ],
+  "tagMap": {}
+}

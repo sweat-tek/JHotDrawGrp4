@@ -10,6 +10,8 @@ package org.jhotdraw.action.edit;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+
+import dk.sdu.mmmi.featuretracer.lib.FeatureEntryPoint;
 import org.jhotdraw.api.gui.EditableComponent;
 import org.jhotdraw.util.*;
 
@@ -69,6 +71,7 @@ public class DuplicateAction extends AbstractSelectionAction {
         labels.configureAction(this, ID);
     }
 
+    @FeatureEntryPoint(value = "Duplicate")
     @Override
     public void actionPerformed(ActionEvent evt) {
         JComponent c = target;
