@@ -7,6 +7,7 @@
  */
 package org.jhotdraw.samples.svg.figures;
 
+import dk.sdu.mmmi.featuretracer.lib.FeatureEntryPoint;
 import org.jhotdraw.draw.figure.AbstractAttributedFigure;
 import java.awt.*;
 import java.awt.event.*;
@@ -19,6 +20,8 @@ import static org.jhotdraw.draw.AttributeKeys.STROKE_WIDTH;
 import static org.jhotdraw.draw.AttributeKeys.TRANSFORM;
 import org.jhotdraw.samples.svg.SVGAttributeKeys;
 import static org.jhotdraw.samples.svg.SVGAttributeKeys.*;
+
+import org.jhotdraw.samples.util.Tracker;
 import org.jhotdraw.util.*;
 
 /**
@@ -36,7 +39,8 @@ public abstract class SVGAttributedFigure extends AbstractAttributedFigure {
      */
     public SVGAttributedFigure() {
     }
-
+    @FeatureEntryPoint ("SVGAttributedFigure_draw")
+    @Tracker
     @Override
     public void draw(Graphics2D g) {
         double opacity = get(OPACITY);
@@ -75,6 +79,8 @@ public abstract class SVGAttributedFigure extends AbstractAttributedFigure {
      * This method is invoked before the rendered image of the figure is
      * composited.
      */
+    @FeatureEntryPoint ("SVGAttributedFigure_drawFigure")
+    @Tracker
     public void drawFigure(Graphics2D g) {
         AffineTransform savedTransform = null;
         if (get(TRANSFORM) != null) {
@@ -106,6 +112,8 @@ public abstract class SVGAttributedFigure extends AbstractAttributedFigure {
     }
 
     @Override
+    @FeatureEntryPoint ("SVGAttributedFigure_getActions")
+    @Tracker
     public Collection<Action> getActions(Point2D.Double p) {
         LinkedList<Action> actions = new LinkedList<Action>();
         if (get(TRANSFORM) != null) {
@@ -114,6 +122,8 @@ public abstract class SVGAttributedFigure extends AbstractAttributedFigure {
                 private static final long serialVersionUID = 1L;
 
                 @Override
+                @FeatureEntryPoint ("SVGAttributedFigure_actionPerformed")
+                @Tracker
                 public void actionPerformed(ActionEvent evt) {
                     willChange();
                     fireUndoableEditHappened(

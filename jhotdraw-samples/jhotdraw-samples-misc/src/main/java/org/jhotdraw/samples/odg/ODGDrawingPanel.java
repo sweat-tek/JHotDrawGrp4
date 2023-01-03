@@ -10,6 +10,8 @@ package org.jhotdraw.samples.odg;
 import java.awt.*;
 import java.util.*;
 import javax.swing.*;
+
+import dk.sdu.mmmi.featuretracer.lib.FeatureEntryPoint;
 import org.jhotdraw.action.edit.CopyAction;
 import org.jhotdraw.action.edit.CutAction;
 import org.jhotdraw.action.edit.DuplicateAction;
@@ -151,7 +153,7 @@ public class ODGDrawingPanel extends JPanel {
         a.add(new SendToBackAction(editor));
         return a;
     }
-
+    @FeatureEntryPoint ("ODGDrawingPanel_addCreationButtonsTo")
     private void addCreationButtonsTo(JToolBar tb, final DrawingEditor editor) {
         // AttributeKeys for the entitie sets
         HashMap<AttributeKey<?>, Object> attributes;

@@ -7,6 +7,7 @@
  */
 package org.jhotdraw.samples.svg.io;
 
+import dk.sdu.mmmi.featuretracer.lib.FeatureEntryPoint;
 import org.jhotdraw.draw.figure.Figure;
 import org.jhotdraw.draw.figure.CompositeFigure;
 import java.awt.Color;
@@ -27,6 +28,7 @@ import org.jhotdraw.samples.svg.figures.SVGPathFigure;
 import org.jhotdraw.samples.svg.figures.SVGRectFigure;
 import org.jhotdraw.samples.svg.figures.SVGTextAreaFigure;
 import org.jhotdraw.samples.svg.figures.SVGTextFigure;
+import org.jhotdraw.samples.util.Tracker;
 
 /**
  * DefaultSVGFigureFactory.
@@ -43,6 +45,8 @@ public class DefaultSVGFigureFactory implements SVGFigureFactory {
     }
 
     @Override
+    @FeatureEntryPoint ("DefaultSVGFigureFactory_createRect")
+    @Tracker
     public Figure createRect(double x, double y, double w, double h, double rx, double ry, Map<AttributeKey<?>, Object> a) {
         SVGRectFigure figure = new SVGRectFigure();
         figure.setBounds(new Point2D.Double(x, y), new Point2D.Double(x + w, y + h));

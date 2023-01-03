@@ -7,6 +7,7 @@
  */
 package org.jhotdraw.samples.odg.figures;
 
+import dk.sdu.mmmi.featuretracer.lib.FeatureEntryPoint;
 import org.jhotdraw.draw.figure.AbstractAttributedFigure;
 import java.awt.*;
 import java.awt.event.*;
@@ -19,6 +20,7 @@ import static org.jhotdraw.draw.AttributeKeys.TRANSFORM;
 import org.jhotdraw.samples.odg.ODGAttributeKeys;
 import static org.jhotdraw.samples.odg.ODGAttributeKeys.*;
 import org.jhotdraw.samples.odg.ODGConstants;
+import org.jhotdraw.samples.util.Tracker;
 import org.jhotdraw.util.*;
 
 /**
@@ -75,6 +77,8 @@ public abstract class ODGAttributedFigure extends AbstractAttributedFigure imple
      * This method is invoked before the rendered image of the figure is
      * composited.
      */
+    @FeatureEntryPoint ("ODGAttributedFigure_adrawFigure")
+    @Tracker
     public void drawFigure(Graphics2D g) {
         AffineTransform savedTransform = null;
         if (get(TRANSFORM) != null) {
