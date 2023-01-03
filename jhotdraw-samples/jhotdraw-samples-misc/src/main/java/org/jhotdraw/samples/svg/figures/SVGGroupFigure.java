@@ -7,7 +7,6 @@
  */
 package org.jhotdraw.samples.svg.figures;
 
-import dk.sdu.mmmi.featuretracer.lib.FeatureEntryPoint;
 import org.jhotdraw.draw.figure.GroupFigure;
 import org.jhotdraw.draw.figure.Figure;
 import java.awt.*;
@@ -19,7 +18,6 @@ import static org.jhotdraw.draw.AttributeKeys.TRANSFORM;
 import org.jhotdraw.draw.handle.Handle;
 import org.jhotdraw.draw.handle.TransformHandleKit;
 import org.jhotdraw.samples.svg.SVGAttributeKeys;
-import org.jhotdraw.samples.util.Tracker;
 
 import static org.jhotdraw.samples.svg.SVGAttributeKeys.*;
 
@@ -69,8 +67,7 @@ public class SVGGroupFigure extends GroupFigure implements SVGFigure {
             set((AttributeKey<Object>) entry.getKey(), entry.getValue());
         }
     }
-    @FeatureEntryPoint ("SVGGroupFigure_draw")
-    @Tracker
+
     @Override
     public void draw(Graphics2D g) {
         double opacity = get(OPACITY);
