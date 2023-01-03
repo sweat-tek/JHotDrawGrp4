@@ -1,11 +1,15 @@
 package org.jhotdraw.draw.action;
 
-import org.testng.annotations.Test;
+import com.tngtech.jgiven.junit.ScenarioTest;
+import org.junit.Test;
 
-public class FigureIsAtTheFrontBehaviorTest {
-
+public class FigureIsAtTheFrontBehaviorTest extends ScenarioTest<GivenOneDrawing, WhenIPressBringToFront, ThenTheFigureIsOnTopOfAllOthers> {
     @Test
-    public void then_the_figure_is_at_the_front(){
-
+    public void BringToFrontFigureBehaviour(){
+        given().oneDrawing()
+                .and().oneFigureOrMore()
+                .and().selectFigure();
+        when().whenIPressBringToFront();
+        then().thenTheFigureIsOnTopOfAllOthers();
     }
 }
