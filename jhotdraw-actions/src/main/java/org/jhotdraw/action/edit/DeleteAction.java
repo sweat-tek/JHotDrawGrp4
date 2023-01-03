@@ -122,7 +122,11 @@ public class DeleteAction extends TextAction {
             if (c instanceof EditableComponent) {
                 ((EditableComponent) c).delete();
             } else {
-                deleteNextChar(evt);
+                try {
+                    deleteNextChar(evt);
+                } catch (Exception e) {
+                    ;
+                }
             }
         }
     }
@@ -131,7 +135,7 @@ public class DeleteAction extends TextAction {
      * This method was copied from
      * DefaultEditorKit.DeleteNextCharAction.actionPerformed(ActionEvent).
      */
-    public void deleteNextChar(ActionEvent e) {
+    public void deleteNextChar(ActionEvent e) throws Exception {
         JTextComponent c = getTextComponent(e);
         boolean beep = true;
         if ((c != null) && (c.isEditable())) {
@@ -141,12 +145,16 @@ public class DeleteAction extends TextAction {
                 int dot = caret.getDot();
                 int mark = caret.getMark();
                 beep = isBeep(beep, doc, dot, mark);
+                if (!beep){
+                    throw new Exception("Beep is False");
+                }
             } catch (BadLocationException bl) {
                 // allowed empty
             }
         }
         if (beep) {
             Toolkit.getDefaultToolkit().beep();
+            throw new UnsupportedOperationException("Beep is True");
         }
     }
 
