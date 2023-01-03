@@ -23,7 +23,7 @@ public class DrawTests {
         try {
             ellipseFigure.draw(g);
         } catch (NullPointerException ignored) {
-
+            //ignore
         }
 
         verify(ellipseFigure).drawFigureOnExistingDrawing(g, 0.5f, drawingArea);
