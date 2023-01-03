@@ -7,7 +7,6 @@
  */
 package org.jhotdraw.samples.odg.figures;
 
-import dk.sdu.mmmi.featuretracer.lib.FeatureEntryPoint;
 import org.jhotdraw.draw.figure.ConnectionFigure;
 import java.awt.*;
 import java.awt.geom.*;
@@ -65,7 +64,6 @@ public class ODGRectFigure extends ODGAttributedFigure implements ODGFigure {
 
     // DRAWING
     @Override
-    @FeatureEntryPoint("ODGRectFigure_drawFill")
     protected void drawFill(Graphics2D g) {
         if (getArcHeight() == 0d && getArcWidth() == 0d) {
             g.fill(roundrect.getBounds2D());
@@ -75,7 +73,6 @@ public class ODGRectFigure extends ODGAttributedFigure implements ODGFigure {
     }
 
     @Override
-    @FeatureEntryPoint("ODGRectFigure_drawStroke")
     protected void drawStroke(Graphics2D g) {
         if (getArcHeight() == 0d && getArcWidth() == 0d) {
             g.draw(roundrect.getBounds2D());
@@ -110,13 +107,12 @@ public class ODGRectFigure extends ODGAttributedFigure implements ODGFigure {
     }
 
     @Override
-    @FeatureEntryPoint("ODGRectFigure_getBounds")
+
     public Rectangle2D.Double getBounds() {
         return (Rectangle2D.Double) roundrect.getBounds2D();
     }
 
     @Override
-    @FeatureEntryPoint("ODGRectFigure_getDrawingArea")
     public Rectangle2D.Double getDrawingArea() {
         Rectangle2D rx = getTransformedShape().getBounds2D();
         Rectangle2D.Double r = (rx instanceof Rectangle2D.Double) ? (Rectangle2D.Double) rx : new Rectangle2D.Double(rx.getX(), rx.getY(), rx.getWidth(), rx.getHeight());
