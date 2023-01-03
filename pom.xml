@@ -65,6 +65,7 @@
 				<version>1.14.0</version>
 				<configuration>
 					<pushRemote>false</pushRemote>
+					<!--suppress UnresolvedMavenProperty -->
 					<mvnExecutable>${M2_HOME}/bin/mvn</mvnExecutable>
 					<skipTestProject>true</skipTestProject>
 					<fetchRemote>false</fetchRemote>
