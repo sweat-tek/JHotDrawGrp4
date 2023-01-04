@@ -26,6 +26,7 @@ import org.jhotdraw.geom.Geom;
 import org.jhotdraw.geom.GrowStroke;
 import org.jhotdraw.samples.svg.Gradient;
 import org.jhotdraw.samples.svg.SVGAttributeKeys;
+import org.jhotdraw.samples.svg.util.Path2DTool;
 
 
 import static org.jhotdraw.samples.svg.SVGAttributeKeys.*;
@@ -106,32 +107,7 @@ public class SVGRectFigure extends SVGAttributedFigure implements SVGFigure {
         if (roundrect.archeight == 0 && roundrect.arcwidth == 0) {
             g.draw(roundrect.getBounds2D());
         } else {
-            // We have to generate the path for the round rectangle manually,
-            // because the path of a Java RoundRectangle is drawn counter clockwise
-            // whereas an SVG rect needs to be drawn clockwise.
-            Path2D.Double p = new Path2D.Double();
-            double aw = roundrect.arcwidth / 2d;
-            double ah = roundrect.archeight / 2d;
-            p.moveTo((roundrect.x + aw), (float) roundrect.y);
-            p.lineTo((roundrect.x + roundrect.width - aw), (float) roundrect.y);
-            p.curveTo((roundrect.x + roundrect.width - aw * ACV), (float) roundrect.y,
-                    (roundrect.x + roundrect.width), (float) (roundrect.y + ah * ACV),
-                    (roundrect.x + roundrect.width), (roundrect.y + ah));
-            p.lineTo((roundrect.x + roundrect.width), (roundrect.y + roundrect.height - ah));
-            p.curveTo(
-                    (roundrect.x + roundrect.width), (roundrect.y + roundrect.height - ah * ACV),
-                    (roundrect.x + roundrect.width - aw * ACV), (roundrect.y + roundrect.height),
-                    (roundrect.x + roundrect.width - aw), (roundrect.y + roundrect.height));
-            p.lineTo((roundrect.x + aw), (roundrect.y + roundrect.height));
-            p.curveTo((roundrect.x + aw * ACV), (roundrect.y + roundrect.height),
-                    (roundrect.x), (roundrect.y + roundrect.height - ah * ACV),
-                    (float) roundrect.x, (roundrect.y + roundrect.height - ah));
-            p.lineTo((float) roundrect.x, (roundrect.y + ah));
-            p.curveTo((roundrect.x), (roundrect.y + ah * ACV),
-                    (roundrect.x + aw * ACV), (float) (roundrect.y),
-                    (float) (roundrect.x + aw), (float) (roundrect.y));
-            p.closePath();
-            g.draw(p);
+            g.draw(Path2DTool.round(roundrect,ACV));
         }
     }
 
@@ -225,6 +201,10 @@ public class SVGRectFigure extends SVGAttributedFigure implements SVGFigure {
     @Override
     public boolean contains(Point2D.Double p) {
         return getHitShape().contains(p);
+    }
+
+    public RoundRectangle2D.Double getRoundrect() {
+        return roundrect;
     }
 
     @Override
@@ -330,20 +310,16 @@ public class SVGRectFigure extends SVGAttributedFigure implements SVGFigure {
     @Override
     public Collection<Handle> createHandles(int detailLevel) {
         LinkedList<Handle> handles = new LinkedList<Handle>();
-        switch (detailLevel % 2) {
-            case -1: // Mouse hover handles
-                handles.add(new BoundsOutlineHandle(this, false, true));
-                break;
-            case 0:
-                ResizeHandleKit.addResizeHandles(this, handles);
-                handles.add(new SVGRectRadiusHandle(this));
-                handles.add(new LinkHandle(this));
-                break;
-            case 1:
-                TransformHandleKit.addTransformHandles(this, handles);
-                break;
-            default:
-                break;
+        if(detailLevel % 2==-1){
+            handles.add(new BoundsOutlineHandle(this, false, true));
+        }
+        if (detailLevel % 2==0) {
+            ResizeHandleKit.addResizeHandles(this, handles);
+            handles.add(new SVGRectRadiusHandle(this));
+            handles.add(new LinkHandle(this));
+        }
+        if(detailLevel % 2==1){
+            TransformHandleKit.addTransformHandles(this, handles);
         }
         return handles;
     }

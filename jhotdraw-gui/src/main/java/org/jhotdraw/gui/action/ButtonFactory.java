@@ -408,7 +408,7 @@ public class ButtonFactory {
      * JToolBar.
      *
      */
-    public static JToggleButton addToolTo(JToolBar tb, DrawingEditor editor,
+    public static JToggleButton  addToolTo(JToolBar tb, DrawingEditor editor,
             Tool tool, String labelKey,
             ResourceBundleUtil labels) {
         ButtonGroup group = (ButtonGroup) tb.getClientProperty("toolButtonGroup");

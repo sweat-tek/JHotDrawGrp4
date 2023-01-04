@@ -83,81 +83,108 @@ public class ToolsToolBar extends AbstractToolBar {
                 TextAreaCreationTool textAreaTool;
                 SVGCreateFromFileTool imageTool;
                 HashMap<AttributeKey<?>, Object> attributes;
+
                 btn = ButtonFactory.addSelectionToolTo(this, editor,
                         ButtonFactory.createDrawingActions(editor, disposables),
                         createSelectionActions(editor));
                 btn.setUI((PaletteButtonUI) PaletteButtonUI.createUI(btn));
                 btn.addMouseListener(new SelectionToolButtonHandler(editor));
+
                 gbc = new GridBagConstraints();
                 gbc.gridx = 0;
                 gbc.gridy = 0;
                 p.add(btn, gbc);
+
                 labels.configureToolBarButton(btn, "selectionTool");
+
+
                 attributes = new HashMap<AttributeKey<?>, Object>();
                 btn = ButtonFactory.addToolTo(this, editor, creationTool = new CreationTool(new SVGRectFigure(), attributes), "createRectangle", labels);
                 creationTool.setToolDoneAfterCreation(false);
                 btn.setUI((PaletteButtonUI) PaletteButtonUI.createUI(btn));
+
                 gbc = new GridBagConstraints();
                 gbc.gridx = 0;
                 gbc.gridy = 1;
                 gbc.insets = new Insets(3, 0, 0, 0);
+
                 p.add(btn, gbc);
+
                 btn = ButtonFactory.addToolTo(this, editor, creationTool = new CreationTool(new SVGEllipseFigure(), attributes), "createEllipse", labels);
                 creationTool.setToolDoneAfterCreation(false);
                 btn.setUI((PaletteButtonUI) PaletteButtonUI.createUI(btn));
+
                 gbc = new GridBagConstraints();
                 gbc.gridx = 1;
                 gbc.gridy = 1;
                 gbc.insets = new Insets(3, 3, 0, 0);
+
                 p.add(btn, gbc);
+
                 btn = ButtonFactory.addToolTo(this, editor, pathTool = new PathTool(new SVGPathFigure(), new SVGBezierFigure(true), attributes), "createPolygon", labels);
                 pathTool.setToolDoneAfterCreation(false);
                 btn.setUI((PaletteButtonUI) PaletteButtonUI.createUI(btn));
+
                 gbc = new GridBagConstraints();
                 gbc.gridx = 2;
                 gbc.gridy = 1;
                 gbc.insets = new Insets(3, 3, 0, 0);
+
                 p.add(btn, gbc);
+
                 attributes = new HashMap<AttributeKey<?>, Object>();
                 attributes.put(AttributeKeys.FILL_COLOR, null);
                 attributes.put(PATH_CLOSED, false);
                 btn = ButtonFactory.addToolTo(this, editor, creationTool = new CreationTool(new SVGPathFigure(), attributes), "createLine", labels);
                 creationTool.setToolDoneAfterCreation(false);
                 btn.setUI((PaletteButtonUI) PaletteButtonUI.createUI(btn));
+
                 gbc = new GridBagConstraints();
                 gbc.gridx = 1;
                 gbc.gridy = 0;
                 gbc.insets = new Insets(0, 3, 0, 0);
+
                 p.add(btn, gbc);
+
                 btn = ButtonFactory.addToolTo(this, editor, pathTool = new PathTool(new SVGPathFigure(), new SVGBezierFigure(false), attributes), "createScribble", labels);
                 pathTool.setToolDoneAfterCreation(false);
                 btn.setUI((PaletteButtonUI) PaletteButtonUI.createUI(btn));
+
                 gbc = new GridBagConstraints();
                 gbc.gridx = 2;
                 gbc.gridy = 0;
                 gbc.insets = new Insets(0, 3, 0, 0);
+
                 p.add(btn, gbc);
+
+
                 attributes = new HashMap<AttributeKey<?>, Object>();
                 attributes.put(AttributeKeys.FILL_COLOR, Color.black);
                 attributes.put(AttributeKeys.STROKE_COLOR, null);
                 btn = ButtonFactory.addToolTo(this, editor, textTool = new TextCreationTool(new SVGTextFigure(), attributes), "createText", labels);
                 textTool.setToolDoneAfterCreation(true);
                 btn.setUI((PaletteButtonUI) PaletteButtonUI.createUI(btn));
+
                 gbc = new GridBagConstraints();
                 gbc.gridx = 0;
                 gbc.gridy = 2;
                 gbc.insets = new Insets(3, 0, 0, 0);
+
                 p.add(btn, gbc);
+
                 textAreaTool = new TextAreaCreationTool(new SVGTextAreaFigure(), attributes);
                 textAreaTool.setRubberbandColor(Color.BLACK);
                 textAreaTool.setToolDoneAfterCreation(true);
                 btn = ButtonFactory.addToolTo(this, editor, textAreaTool, "createTextArea", labels);
                 btn.setUI((PaletteButtonUI) PaletteButtonUI.createUI(btn));
+
                 gbc = new GridBagConstraints();
                 gbc.gridx = 1;
                 gbc.gridy = 2;
                 gbc.insets = new Insets(3, 3, 0, 0);
+
                 p.add(btn, gbc);
+
                 attributes = new HashMap<AttributeKey<?>, Object>();
                 attributes.put(AttributeKeys.FILL_COLOR, null);
                 attributes.put(AttributeKeys.STROKE_COLOR, null);
@@ -165,10 +192,12 @@ public class ToolsToolBar extends AbstractToolBar {
                 imageTool.setToolDoneAfterCreation(true);
                 imageTool.setUseFileDialog(true);
                 btn.setUI((PaletteButtonUI) PaletteButtonUI.createUI(btn));
+
                 gbc = new GridBagConstraints();
                 gbc.gridx = 2;
                 gbc.gridy = 2;
                 gbc.insets = new Insets(3, 3, 0, 0);
+
                 p.add(btn, gbc);
             break;
         }
